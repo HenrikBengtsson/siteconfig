@@ -1,0 +1,22 @@
+Package: siteconfig
+Title: Site Configuration of R for HPC Environments
+Version: 0.0.1
+Authors@R: c(
+  person(
+    "Henrik", "Bengtsson",
+    email = "henrik.bengtsson@gmail.com",
+    role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-7579-5165")
+  ))
+Description: Utilities for configuring R on a high-performance compute (HPC)
+    environment, controlled by environment variables. Infers the default
+    Bioconductor version, sets the default CRAN and Bioconductor package
+    repositories, and falls back to local mirrors on the file system when
+    there is no internet access, e.g. when environment variable
+    'NO_INTERNET' is 'true'.
+License: MIT + file LICENSE
+Imports: utils
+Suggests: BiocManager, BiocVersion
+Config/roxygen2/version: 8.1.1
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
