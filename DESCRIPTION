@@ -1,6 +1,6 @@
 Package: siteconfig
 Title: Site Configuration of R for HPC Environments
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: c(
   person(
     "Henrik", "Bengtsson",

@@ -6,6 +6,10 @@
 \usage{
 use_graphics()
 }
+\value{
+Nothing (\code{NULL}, invisibly). Called for its side effect of setting
+option \code{bitmapType} to \code{"cairo"} when X11 is unavailable but cairo is.
+}
 \description{
 Use an alternative graphics device if X11 is not available
 }

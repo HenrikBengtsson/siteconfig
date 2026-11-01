@@ -8,8 +8,11 @@
 
  * Added `no_internet()`, which respects environment variable `NO_INTERNET`.
 
- * Added `use()`, which calls `use_repos()` and then unloads the package
-   unless it is attached.
+ * Added `cbi_libs_user()` and `use_libpaths()`, which set `R_LIBS_USER` and
+   `.libPaths()` to the CBI-specific user library inferred from R's own
+   location. This makes R sessions without the module environment, e.g. Open
+   OnDemand RStudio, use the same library as `module load CBI r`. Called when
+   the package is attached.
 
  * Added `local_mirror_root()`, `default_repos()`, and `use_repos()` for
    setting up CRAN and Bioconductor repositories, using local file-system
