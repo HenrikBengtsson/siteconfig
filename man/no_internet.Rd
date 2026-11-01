@@ -12,7 +12,7 @@ no_internet()
 \description{
 The decision is made from environment variable \code{NO_INTERNET}. If
 \code{true}, there is no internet, If \code{false}, there is internet.
-If not set, it is assumed there is internet.
+If not set, it is assumed there is no internet.
 }
 \examples{
 no_internet()
