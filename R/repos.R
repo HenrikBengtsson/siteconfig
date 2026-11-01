@@ -8,10 +8,17 @@
 #' @examples
 #' local_mirror_root()
 #'
+#' @importFrom utils file_test
 #' @export
 local_mirror_root <- function() {
   root <- Sys.getenv("R_REPOS_ROOT", NA_character_)
-  if (is.na(root)) return(NA_character_)
+  if (is.na(root)) {
+    ## HARDCODED:
+    path <- "/mnt/software/cbi/mirrors/r-mirrors"
+    if (file_test("-d", path)) {
+      root <- path
+    }
+  }
   if (!is_dir(root)) return(NA_character_)
   normalizePath(root, mustWork = TRUE)
 }
@@ -133,29 +140,4 @@ known_repos <- function() {
   repos <- a$URL
   names(repos) <- rownames(a)
   repos
-}
-
-#' Configure R for the Current Site and Unload the Package
-#'
-#' Calls [use_repos()] and then unloads the package, unless it is attached,
-#' e.g. via `library(siteconfig)`. This is useful in `Rprofile.site`, where
-#' `siteconfig::use()` configures R without leaving the package loaded.
-#'
-#' @param ... Arguments passed to [use_repos()].
-#'
-#' @return Invisibly, the previous `repos` option.
-#'
-#' @examples
-#' \dontrun{
-#' siteconfig::use()
-#' }
-#'
-#' @export
-use <- function(...) {
-  old <- use_repos(...)
-  if (!"package:siteconfig" %in% search()) {
-    ## Fails harmlessly if other loaded packages import this package
-    tryCatch(unloadNamespace("siteconfig"), error = function(e) NULL)
-  }
-  invisible(old)
 }
